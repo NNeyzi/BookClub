@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootTableViewController.h
 //  BookClub
 //
 //  Created by Anders Chaplin on 6/3/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface RootTableViewController : UITableViewController
 
 @end
-
