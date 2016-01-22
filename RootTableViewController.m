@@ -2,13 +2,30 @@
 //  RootTableViewController.m
 //  BookClub
 //
-//  Created by Anders Chaplin on 6/3/15.
-//  Copyright (c) 2015 ___AndersChaplin___. All rights reserved.
+//  Created by Nader Neyzi on 5/21/15.
+//  Copyright (c) 2015 Nader Neyzi. All rights reserved.
 //
 
 #import "RootTableViewController.h"
+#import "Person.h"
+#import "FriendDetailViewController.h"
+#import "AppDelegate.h"
 
-@interface RootTableViewController ()
+
+@interface RootTableViewController ()<UISearchResultsUpdating, UISearchBarDelegate>
+
+@property NSMutableArray *people;
+@property NSMutableArray *filteredPeople;
+@property NSManagedObjectContext *moc;
+@property BOOL sortTapped;
+
+@property (strong, nonatomic) UISearchController *searchController;
+
+typedef NS_ENUM(NSInteger, BookClubSearchScope)
+{
+    searchScopeName = 0,
+    searchScopeNumber = 1
+};
 
 @end
 
@@ -16,85 +33,116 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    self.sortTapped = NO;
+
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    self.moc = delegate.managedObjectContext;
+
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.scopeButtonTitles = @[@"Name",@"Number of Books"];
+    self.searchController.searchBar.delegate = self;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
+    [self.searchController.searchBar sizeToFit];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [self loadPeople];
+}
+
+- (void)loadPeople {
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Person"];
+    self.people = [[self.moc executeFetchRequest:request error:nil] mutableCopy];
+    [self.tableView reloadData];
+}
+
+- (IBAction)onSortTapped:(id)sender {
+
+    //NSSortDescriptor might have been a better option
+
+    if (self.sortTapped) {
+        self.people = [[[self.people reverseObjectEnumerator] allObjects] mutableCopy];
+    }else {
+        [self.people sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            NSNumber *num1 = [(Person *)obj1 numBooks];
+            NSNumber *num2 = [(Person *)obj2 numBooks];
+            return [num1 compare:num2];
+        }];
+    }
+    [self.tableView reloadData];
+    self.sortTapped = !self.sortTapped;
+}
+
+
+#pragma mark - UISearchBarDelegate
+
+-(void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    [self updateSearchResultsForSearchController:self.searchController];
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+
+}
+#pragma mark - UISearchResultsUpdating
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+
+    NSString *searchString = searchController.searchBar.text;
+    [self searchForText:searchString scope:searchController.searchBar.selectedScopeButtonIndex];
+}
+
+- (void)searchForText:(NSString *)searchText scope:(BookClubSearchScope)scopeOption {
+    if (self.moc)
+    {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Person"];
+        if (scopeOption == searchScopeName) {
+            request.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS %@", searchText];
+        } else {
+            request.predicate = [NSPredicate predicateWithFormat:@"books.@count = %d", [searchText intValue]];
+        }
+        self.filteredPeople = [[self.moc executeFetchRequest:request error:nil] mutableCopy];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+
+    if (self.searchController.active) {
+        return self.filteredPeople.count;
+    } else {
+        return self.people.count;
+    }
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    Person *person;
+    if (self.searchController.active) {
+        person = [self.filteredPeople objectAtIndex:indexPath.row];
+    } else {
+        person = [self.people objectAtIndex:indexPath.row];
+    }
+    cell.textLabel.text = person.name;
+    UIImage *image = [UIImage imageNamed:person.image];
+    cell.imageView.image = image;
+
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if ([segue.identifier isEqualToString:@"SegueToFriendDetailVC"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:(UITableViewCell *)sender];
+        FriendDetailViewController *destVC = segue.destinationViewController;
+        destVC.person = [self.people objectAtIndex:indexPath.row];
+    }
 }
-*/
 
 @end

@@ -2,8 +2,8 @@
 //  Comment.h
 //  BookClub
 //
-//  Created by Anders Chaplin on 6/3/15.
-//  Copyright (c) 2015 ___AndersChaplin___. All rights reserved.
+//  Created by Nader Neyzi on 5/21/15.
+//  Copyright (c) 2015 Nader Neyzi. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

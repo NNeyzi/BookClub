@@ -10,11 +10,19 @@
 		9ADB18BE1B1FA6E2009D6BD0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18BD1B1FA6E2009D6BD0 /* main.m */; };
 		9ADB18C11B1FA6E2009D6BD0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18C01B1FA6E2009D6BD0 /* AppDelegate.m */; };
 		9ADB18C41B1FA6E2009D6BD0 /* BookClub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18C21B1FA6E2009D6BD0 /* BookClub.xcdatamodeld */; };
-		9ADB18C71B1FA6E2009D6BD0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18C61B1FA6E2009D6BD0 /* ViewController.m */; };
 		9ADB18CA1B1FA6E2009D6BD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADB18C81B1FA6E2009D6BD0 /* Main.storyboard */; };
 		9ADB18CC1B1FA6E2009D6BD0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADB18CB1B1FA6E2009D6BD0 /* Images.xcassets */; };
 		9ADB18CF1B1FA6E2009D6BD0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9ADB18CD1B1FA6E2009D6BD0 /* LaunchScreen.xib */; };
 		9ADB18DB1B1FA6E2009D6BD0 /* BookClubTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18DA1B1FA6E2009D6BD0 /* BookClubTests.m */; };
+		9ADB18E61B1FA73E009D6BD0 /* PeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18E51B1FA73E009D6BD0 /* PeopleTableViewController.m */; };
+		9ADB18E81B1FA7D4009D6BD0 /* friends.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ADB18E71B1FA7D4009D6BD0 /* friends.json */; };
+		9ADB18EB1B1FA8EB009D6BD0 /* RootTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18EA1B1FA8EB009D6BD0 /* RootTableViewController.m */; };
+		9ADB18EE1B1FB29C009D6BD0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18ED1B1FB29C009D6BD0 /* Person.m */; };
+		9ADB18F11B1FB29D009D6BD0 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18F01B1FB29D009D6BD0 /* Book.m */; };
+		9ADB18F41B1FB29D009D6BD0 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18F31B1FB29D009D6BD0 /* Comment.m */; };
+		9ADB18FA1B1FCCA2009D6BD0 /* FriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18F91B1FCCA2009D6BD0 /* FriendDetailViewController.m */; };
+		9ADB18FD1B1FD25E009D6BD0 /* AddBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18FC1B1FD25E009D6BD0 /* AddBookViewController.m */; };
+		9ADB19001B1FD8CA009D6BD0 /* BookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADB18FF1B1FD8CA009D6BD0 /* BookDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +42,29 @@
 		9ADB18BF1B1FA6E2009D6BD0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9ADB18C01B1FA6E2009D6BD0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9ADB18C31B1FA6E2009D6BD0 /* BookClub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookClub.xcdatamodel; sourceTree = "<group>"; };
-		9ADB18C51B1FA6E2009D6BD0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9ADB18C61B1FA6E2009D6BD0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9ADB18C91B1FA6E2009D6BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9ADB18CB1B1FA6E2009D6BD0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9ADB18CE1B1FA6E2009D6BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9ADB18D41B1FA6E2009D6BD0 /* BookClubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookClubTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADB18D91B1FA6E2009D6BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9ADB18DA1B1FA6E2009D6BD0 /* BookClubTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookClubTests.m; sourceTree = "<group>"; };
+		9ADB18E41B1FA73E009D6BD0 /* PeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTableViewController.h; sourceTree = "<group>"; };
+		9ADB18E51B1FA73E009D6BD0 /* PeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTableViewController.m; sourceTree = "<group>"; };
+		9ADB18E71B1FA7D4009D6BD0 /* friends.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = friends.json; sourceTree = "<group>"; };
+		9ADB18E91B1FA8EB009D6BD0 /* RootTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootTableViewController.h; path = ../RootTableViewController.h; sourceTree = "<group>"; };
+		9ADB18EA1B1FA8EB009D6BD0 /* RootTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootTableViewController.m; path = ../RootTableViewController.m; sourceTree = "<group>"; };
+		9ADB18EC1B1FB29C009D6BD0 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		9ADB18ED1B1FB29C009D6BD0 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		9ADB18EF1B1FB29D009D6BD0 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		9ADB18F01B1FB29D009D6BD0 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		9ADB18F21B1FB29D009D6BD0 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		9ADB18F31B1FB29D009D6BD0 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		9ADB18F81B1FCCA2009D6BD0 /* FriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendDetailViewController.h; path = ../FriendDetailViewController.h; sourceTree = "<group>"; };
+		9ADB18F91B1FCCA2009D6BD0 /* FriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendDetailViewController.m; path = ../FriendDetailViewController.m; sourceTree = "<group>"; };
+		9ADB18FB1B1FD25E009D6BD0 /* AddBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookViewController.h; sourceTree = "<group>"; };
+		9ADB18FC1B1FD25E009D6BD0 /* AddBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookViewController.m; sourceTree = "<group>"; };
+		9ADB18FE1B1FD8CA009D6BD0 /* BookDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookDetailViewController.h; sourceTree = "<group>"; };
+		9ADB18FF1B1FD8CA009D6BD0 /* BookDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +108,24 @@
 			children = (
 				9ADB18BF1B1FA6E2009D6BD0 /* AppDelegate.h */,
 				9ADB18C01B1FA6E2009D6BD0 /* AppDelegate.m */,
-				9ADB18C51B1FA6E2009D6BD0 /* ViewController.h */,
-				9ADB18C61B1FA6E2009D6BD0 /* ViewController.m */,
+				9ADB18E91B1FA8EB009D6BD0 /* RootTableViewController.h */,
+				9ADB18EA1B1FA8EB009D6BD0 /* RootTableViewController.m */,
+				9ADB18E41B1FA73E009D6BD0 /* PeopleTableViewController.h */,
+				9ADB18E51B1FA73E009D6BD0 /* PeopleTableViewController.m */,
+				9ADB18F81B1FCCA2009D6BD0 /* FriendDetailViewController.h */,
+				9ADB18F91B1FCCA2009D6BD0 /* FriendDetailViewController.m */,
+				9ADB18FB1B1FD25E009D6BD0 /* AddBookViewController.h */,
+				9ADB18FC1B1FD25E009D6BD0 /* AddBookViewController.m */,
+				9ADB18FE1B1FD8CA009D6BD0 /* BookDetailViewController.h */,
+				9ADB18FF1B1FD8CA009D6BD0 /* BookDetailViewController.m */,
 				9ADB18C81B1FA6E2009D6BD0 /* Main.storyboard */,
+				9ADB18EC1B1FB29C009D6BD0 /* Person.h */,
+				9ADB18ED1B1FB29C009D6BD0 /* Person.m */,
+				9ADB18EF1B1FB29D009D6BD0 /* Book.h */,
+				9ADB18F01B1FB29D009D6BD0 /* Book.m */,
+				9ADB18F21B1FB29D009D6BD0 /* Comment.h */,
+				9ADB18F31B1FB29D009D6BD0 /* Comment.m */,
+				9ADB18E71B1FA7D4009D6BD0 /* friends.json */,
 				9ADB18CB1B1FA6E2009D6BD0 /* Images.xcassets */,
 				9ADB18CD1B1FA6E2009D6BD0 /* LaunchScreen.xib */,
 				9ADB18C21B1FA6E2009D6BD0 /* BookClub.xcdatamodeld */,
@@ -205,6 +243,7 @@
 				9ADB18CA1B1FA6E2009D6BD0 /* Main.storyboard in Resources */,
 				9ADB18CF1B1FA6E2009D6BD0 /* LaunchScreen.xib in Resources */,
 				9ADB18CC1B1FA6E2009D6BD0 /* Images.xcassets in Resources */,
+				9ADB18E81B1FA7D4009D6BD0 /* friends.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,10 +261,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ADB19001B1FD8CA009D6BD0 /* BookDetailViewController.m in Sources */,
+				9ADB18EE1B1FB29C009D6BD0 /* Person.m in Sources */,
+				9ADB18EB1B1FA8EB009D6BD0 /* RootTableViewController.m in Sources */,
+				9ADB18E61B1FA73E009D6BD0 /* PeopleTableViewController.m in Sources */,
+				9ADB18FD1B1FD25E009D6BD0 /* AddBookViewController.m in Sources */,
 				9ADB18C11B1FA6E2009D6BD0 /* AppDelegate.m in Sources */,
+				9ADB18FA1B1FCCA2009D6BD0 /* FriendDetailViewController.m in Sources */,
 				9ADB18C41B1FA6E2009D6BD0 /* BookClub.xcdatamodeld in Sources */,
-				9ADB18C71B1FA6E2009D6BD0 /* ViewController.m in Sources */,
+				9ADB18F11B1FB29D009D6BD0 /* Book.m in Sources */,
 				9ADB18BE1B1FA6E2009D6BD0 /* main.m in Sources */,
+				9ADB18F41B1FB29D009D6BD0 /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +462,7 @@
 				9ADB18E01B1FA6E2009D6BD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9ADB18E11B1FA6E2009D6BD0 /* Build configuration list for PBXNativeTarget "BookClubTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +471,7 @@
 				9ADB18E31B1FA6E2009D6BD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

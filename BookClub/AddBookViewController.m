@@ -2,13 +2,19 @@
 //  AddBookViewController.m
 //  BookClub
 //
-//  Created by Anders Chaplin on 6/3/15.
-//  Copyright (c) 2015 ___AndersChaplin___. All rights reserved.
+//  Created by Nader Neyzi on 5/21/15.
+//  Copyright (c) 2015 Nader Neyzi. All rights reserved.
 //
 
 #import "AddBookViewController.h"
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
 
 @interface AddBookViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *addTitleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addAuthorTextField;
+@property NSManagedObjectContext *moc;
+@property NSArray *books;
 
 @end
 
@@ -16,22 +22,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    self.moc = delegate.managedObjectContext;
+    self.books = [self.person.books allObjects];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)onSaveButtonTapped {
+
+    if (self.addTitleTextField.text.length != 0 && self.addAuthorTextField.text.length != 0) {
+        Book *book = [NSEntityDescription insertNewObjectForEntityForName:@"Book"inManagedObjectContext:self.moc];
+        [book setValue:self.addTitleTextField.text forKey:@"title"];
+        [book setValue:self.addAuthorTextField.text forKey:@"author"];
+        [book setValue:@"book" forKey:@"image"];
+        [self.person addBooksObject:book];
+        self.person.numBooks = [NSNumber numberWithInteger:self.person.books.count];
+        [self.moc save:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
 
 @end
